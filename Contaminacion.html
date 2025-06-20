@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contaminación: Un Arcoíris de Problemas</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ecoRainbow1: '#FF9AA2',  // Rosa
+                        ecoRainbow2: '#FFB7B2',  // Melocotón
+                        ecoRainbow3: '#FFDAC1',  // Crema
+                        ecoRainbow4: '#E2F0CB',  // Verde claro
+                        ecoRainbow5: '#B5EAD7',  // Aqua
+                        ecoRainbow6: '#C7CEEA',  // Lila
+                        ecoDark: '#3A3B3C',      // Gris oscuro
+                        ecoVibrant1: '#FF6B6B',  // Rojo coral
+                        ecoVibrant2: '#4ECDC4',  // Turquesa
+                        ecoVibrant3: '#FFE66D',  // Amarillo
+                        ecoVibrant4: '#6B5B95',  // Púrpura
+                        ecoVibrant5: '#FFA07A'   // Salmón
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s infinite',
+                        'spin-slow': 'spin 8s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap');
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #E2F0CB 0%, #C7CEEA 100%);
+        }
+        
+        .rainbow-text {
+            background: linear-gradient(90deg, 
+                #FF9AA2, #FFB7B2, #FFDAC1, #E2F0CB, #B5EAD7, #C7CEEA);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 8s ease infinite;
+            background-size: 400% 100%;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .icon-spin {
+            animation: spin-slow 10s linear infinite;
+        }
+        
+        .bounce {
+            animation: bounce-slow 3s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header Colorido -->
+    <header class="bg-gradient-to-r from-ecoRainbow1 to-ecoRainbow6 py-6 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <i class="fas fa-earth-americas text-4xl mr-3 text-white bounce"></i>
+                    <h1 class="text-4xl font-bold rainbow-text font-['Fredoka One']">
+                        ¡Alerta Contaminación!
+                    </h1>
+                </div>
+                <nav class="flex space-x-1">
+                    <button onclick="scrollToSection('tipos')" class="px-4 py-2 rounded-full bg-ecoVibrant3 text-ecoDark font-bold hover:bg-ecoVibrant1 hover:text-white transition-all">
+                        Tipos
+                    </button>
+                    <button onclick="scrollToSection('efectos')" class="px-4 py-2 rounded-full bg-ecoVibrant2 text-white font-bold hover:bg-ecoVibrant4 hover:text-white transition-all">
+                        Efectos
+                    </button>
+                    <button onclick="scrollToSection('soluciones')" class="px-4 py-2 rounded-full bg-ecoVibrant4 text-white font-bold hover:bg-ecoVibrant5 hover:text-ecoDark transition-all">
+                        Soluciones
+                    </button>
+                    <button onclick="scrollToSection('actividades')" class="px-4 py-2 rounded-full bg-ecoVibrant5 text-ecoDark font-bold hover:bg-ecoVibrant2 hover:text-white transition-all">
+                        Actividades
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-ecoRainbow3 to-ecoRainbow5">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-ecoVibrant1 mix-blend-multiply filter blur-xl animate-pulse-slow"></div>
+            <div class="absolute bottom-0 right-0 w-32 h-32 rounded-full bg-ecoVibrant2 mix-blend-multiply filter blur-xl animate-pulse-slow animation-delay-2000"></div>
+            <div class="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-ecoVibrant3 mix-blend-multiply filter blur-xl animate-pulse-slow animation-delay-4000"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-5xl font-bold mb-6 text-ecoDark font-['Fredoka One']">
+                        <span class="rainbow-text">¡Nuestro Planeta</span> <br>Necesita Ayuda!
+                    </h2>
+                    <p class="text-xl mb-8 text-ecoDark">
+                        La contaminación está pintando nuestro mundo de colores que no debería tener. 
+                        ¡Aprende cómo podemos devolverle sus verdaderos colores!
+                    </p>
+                    <button onclick="scrollToSection('tipos')" class="px-8 py-3 bg-ecoVibrant1 text-white font-bold rounded-full hover:bg-ecoVibrant4 transform hover:scale-110 transition-all shadow-lg">
+                        <i class="fas fa-arrow-down mr-2"></i> Descubre Más
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Contaminación ambiental" 
+                         class="rounded-3xl border-8 border-white shadow-2xl transform rotate-3 hover:rotate-0 transition-transform">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipos de Contaminación -->
+    <section id="tipos" class="py-16 bg-gradient-to-r from-ecoRainbow4 to-ecoRainbow2">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white font-['Fredoka One'] shadow-text">
+                <i class="fas fa-biohazard icon-spin mr-3"></i> Tipos de Contaminación
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-xl card-hover transition-all duration-300">
+                    <div class="h-48 bg-ecoVibrant1 flex items-center justify-center">
+                        <i class="fas fa-smog text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-ecoVibrant1">Aire</h3>
+                        <p class="text-gray-700 mb-4">
+                            Humos de fábricas, carros y quema de basura ensucian el aire que respiramos.
+                        </p>
+                        <div class="flex items-center text-sm text-ecoVibrant1">
+                            <i class="fas fa-lungs mr-2"></i> Causa problemas respiratorios
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-xl card-hover transition-all duration-300">
+                    <div class="h-48 bg-ecoVibrant2 flex items-center justify-center">
+                        <i class="fas fa-tint text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-ecoVibrant2">Agua</h3>
+                        <p class="text-gray-700 mb-4">
+                            Desechos químicos y basura en ríos y mares dañan a los peces y plantas acuáticas.
+                        </p>
+                        <div class="flex items-center text-sm text-ecoVibrant2">
+                            <i class="fas fa-fish mr-2"></i> Mata la vida marina
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-xl card-hover transition-all duration-300">
+                    <div class="h-48 bg-ecoVibrant3 flex items-center justify-center">
+                        <i class="fas fa-mountain text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-ecoVibrant3">Suelo</h3>
+                        <p class="text-gray-700 mb-4">
+                            Pesticidas y basura no biodegradable hacen que la tierra no sirva para cultivar.
+                        </p>
+                        <div class="flex items-center text-sm text-ecoVibrant3">
+                            <i class="fas fa-apple-alt mr-2"></i> Afecta nuestros alimentos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Efectos de la Contaminación -->
+    <section id="efectos" class="py-16 bg-gradient-to-l from-ecoVibrant4 to-ecoVibrant5">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white font-['Fredoka One']">
+                <i class="fas fa-exclamation-triangle bounce mr-3"></i> ¡Efectos Peligrosos!
+            </h2>
+            
+            <div class="bg-white bg-opacity-90 rounded-3xl p-8 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Efecto 1 -->
+                    <div class="flex items-start">
+                        <div class="bg-ecoVibrant1 text-white p-4 rounded-full mr-4">
+                            <i class="fas fa-heartbeat text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-ecoVibrant1">Salud Humana</h3>
+                            <p class="text-gray-700">
+                                La contaminación causa enfermedades como asma, alergias y hasta cáncer. 
+                                ¡Los niños son los más afectados!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Efecto 2 -->
+                    <div class="flex items-start">
+                        <div class="bg-ecoVibrant2 text-white p-4 rounded-full mr-4">
+                            <i class="fas fa-paw text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-ecoVibrant2">Animales en Peligro</h3>
+                            <p class="text-gray-700">
+                                Muchos animales mueren por comer plástico o perder su hábitat. 
+                                ¡Las tortugas confunden las bolsas con medusas!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Efecto 3 -->
+                    <div class="flex items-start">
+                        <div class="bg-ecoVibrant3 text-white p-4 rounded-full mr-4">
+                            <i class="fas fa-tree text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-ecoVibrant3">Bosques que Desaparecen</h3>
+                            <p class="text-gray-700">
+                                La lluvia ácida y la tala de árboles están acabando con los pulmones de nuestro planeta.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Efecto 4 -->
+                    <div class="flex items-start">
+                        <div class="bg-ecoVibrant4 text-white p-4 rounded-full mr-4">
+                            <i class="fas fa-thermometer-full text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 text-ecoVibrant4">Cambio Climático</h3>
+                            <p class="text-gray-700">
+                                El calor aumenta, los polos se derriten y el clima se vuelve loco por los gases contaminantes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 bg-gradient-to-r from-ecoRainbow1 to-ecoRainbow6 rounded-2xl p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-3 text-white">¿Sabías que...?</h3>
+                    <p class="text-white text-lg">
+                        <i class="fas fa-quote-left mr-2"></i>
+                        Cada año mueren más de 7 millones de personas por la contaminación del aire, 
+                        ¡eso es como si desapareciera toda la gente de Paraguay!
+                        <i class="fas fa-quote-right ml-2"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluciones -->
+    <section id="soluciones" class="py-16 bg-gradient-to-br from-ecoRainbow5 to-ecoRainbow1">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white font-['Fredoka One']">
+                <i class="fas fa-lightbulb bounce mr-3"></i> ¡Soluciones Creativas!
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Solución 1 -->
+                <div class="bg-white bg-opacity-90 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-all">
+                    <div class="bg-ecoVibrant2 text-white w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-recycle text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-ecoVibrant2">Las 3 R's</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center">
+                            <span class="bg-ecoVibrant2 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">1</span>
+                            <span><strong>Reducir:</strong> Usa menos cosas que generen basura</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-ecoVibrant2 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">2</span>
+                            <span><strong>Reutilizar:</strong> Dale una segunda vida a los objetos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="bg-ecoVibrant2 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">3</span>
+                            <span><strong>Reciclar:</strong> Separa la basura para crear cosas nuevas</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Solución 2 -->
+                <div class="bg-white bg-opacity-90 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-all">
+                    <div class="bg-ecoVibrant3 text-white w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-ecoVibrant3">Energía Limpia</h3>
+                    <div class="flex flex-wrap justify-center gap-3 mb-4">
+                        <span class="px-3 py-1 bg-ecoVibrant3 bg-opacity-20 rounded-full text-ecoVibrant3 text-sm">
+                            <i class="fas fa-sun mr-1"></i> Solar
+                        </span>
+                        <span class="px-3 py-1 bg-ecoVibrant3 bg-opacity-20 rounded-full text-ecoVibrant3 text-sm">
+                            <i class="fas fa-wind mr-1"></i> Eólica
+                        </span>
+                        <span class="px-3 py-1 bg-ecoVibrant3 bg-opacity-20 rounded-full text-ecoVibrant3 text-sm">
+                            <i class="fas fa-water mr-1"></i> Hidroeléctrica
+                        </span>
+                    </div>
+                    <p class="text-gray-700">
+                        Usar energía del sol, viento y agua en lugar de petróleo o carbón que contaminan mucho.
+                    </p>
+                </div>
+                
+                <!-- Solución 3 -->
+                <div class="bg-white bg-opacity-90 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-all">
+                    <div class="bg-ecoVibrant4 text-white w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-bicycle text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-ecoVibrant4">Transporte Verde</h3>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-500">Contaminación</span>
+                            <span class="text-sm font-medium text-ecoVibrant4">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-ecoVibrant4 h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-ecoVibrant4 mr-2"></i> Camina o usa bicicleta
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-ecoVibrant4 mr-2"></i> Comparte el auto con amigos
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-ecoVibrant4 mr-2"></i> Usa transporte público
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white bg-opacity-90 rounded-2xl p-8 shadow-xl">
+                <h3 class="text-2xl font-bold mb-4 text-center text-ecoVibrant1">
+                    <i class="fas fa-seedling mr-2"></i> Proyectos Ecológicos en Escuelas
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start">
+                        <div class="bg-ecoVibrant5 text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-leaf text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-1 text-ecoVibrant5">Huerto Escolar</h4>
+                            <p class="text-gray-700">
+                                Cultiva tus propias verduras y aprende sobre agricultura sostenible.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-ecoVibrant2 text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-trash-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-1 text-ecoVibrant2">Reciclaje Artístico</h4>
+                            <p class="text-gray-700">
+                                Crea obras de arte con materiales reciclados y organiza una exposición.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actividades Interactivas -->
+    <section id="actividades" class="py-16 bg-gradient-to-tr from-ecoRainbow6 to-ecoRainbow3">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center text-white font-['Fredoka One']">
+                <i class="fas fa-gamepad bounce mr-3"></i> ¡Aprende Jugando!
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Quiz -->
+                <div class="bg-white bg-opacity-90 rounded-2xl p-6 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-ecoVibrant4">
+                        <i class="fas fa-question-circle mr-2"></i> Quiz Ecológico
+                    </h3>
+                    <div id="quiz-container" class="space-y-4">
+                        <div class="quiz-question">
+                            <p class="font-bold mb-2">1. ¿Cuánto tiempo tarda en degradarse una bolsa de plástico?</p>
+                            <div class="space-y-2">
+                                <button onclick="checkAnswer(this, true)" class="w-full text-left px-4 py-2 bg-ecoVibrant1 bg-opacity-10 rounded-lg hover:bg-opacity-30 transition-all">
+                                    a) 150 años
+                                </button>
+                                <button onclick="checkAnswer(this, false)" class="w-full text-left px-4 py-2 bg-ecoVibrant1 bg-opacity-10 rounded-lg hover:bg-opacity-30 transition-all">
+                                    b) 2 semanas
+                                </button>
+                                <button onclick="checkAnswer(this, false)" class="w-full text-left px-4 py-2 bg-ecoVibrant1 bg-opacity-10 rounded-lg hover:bg-opacity-30 transition-all">
+                                    c) 5 años
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-question mt-6">
+                            <p class="font-bold mb-2">2. ¿Qué puedes hacer para reducir la contaminación?</p>
+                            <div class="space-y-2">
+                                <button onclick="checkAnswer(this, false)" class="w-full text-left px-4 py-2 bg-ecoVibrant2 bg-opacity-10 rounded-lg hover:bg-opacity-30 transition-all">
+                                    a) Tirar basura en la calle
+                                </button>
+                                <button onclick="checkAnswer(this, true)" class="w-full text-left px-4 py-2 bg-ecoVibrant2 bg-opacity-10 rounded-lg hover:bg-opacity-30 transition-all">
+                                    b) Usar una botella de agua reutilizable
+                                </button>
+                                <button onclick="checkAnswer(this, false)" class="w-full text-left px-4 py-2 bg-ecoVibrant2 bg-opacity-10 rounded-lg hover:bg-opacity-30 transition-all">
+                                    c) Dejar las luces encendidas todo el día
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="quiz-feedback" class="mt-4 text-center font-bold hidden"></div>
+                </div>
+                
+                <!-- Calculadora de Huella Ecológica -->
+                <div class="bg-white bg-opacity-90 rounded-2xl p-6 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-ecoVibrant3">
+                        <i class="fas fa-calculator mr-2"></i> Calcula Tu Huella
+                    </h3>
+                    <form id="footprint-calculator" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 mb-1">¿Cuántas bolsas de plástico usas por semana?</label>
+                            <input type="range" min="0" max="20" value="5" class="w-full h-2 bg-ecoVibrant3 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-xs text-gray-500">
+                                <span>0</span>
+                                <span>20+</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-1">¿Cuánto tiempo pasas en la ducha?</label>
